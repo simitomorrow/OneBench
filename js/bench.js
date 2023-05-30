@@ -96,23 +96,37 @@ function colorPicker() {
         convert to pastel
         apply to textbox
     */
-} 
+}
 
 function showAreYouSurePrompt() {
     /*
         if yes -> saveMemory()
     */
-    
-    function saveMemory() {
+
+
+    let memory = {
+        question: "how you doin?",
+        text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        color: "AABBCCDD",
+        userHash: "notsureyet"
+    }
+    saveMemory();
+
+    async function saveMemory() {
         /*
-        
             save in db
             close textbox
             play animation?
             refresh memories or add newly saved to memorieslist
         */
+
+        const response = await fetch("./memorydao.php", {
+            method: 'POST',
+            body: JSON.stringify(memory)
+        })
     }
 }
+showAreYouSurePrompt();
 
 // not sure how that is going to work
 function preventSpam() {
