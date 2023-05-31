@@ -18,7 +18,7 @@
         ,Message VARCHAR(5000)
         ,Color VARCHAR(9)
         ,By_User_Hash VARCHAR(64)
-        ,Date_Created DATE
+        ,Date_Created DATETIME DEFAULT NOW()
         );
 */
 
@@ -98,35 +98,36 @@ function colorPicker() {
     */
 }
 
-function showAreYouSurePrompt() {
+async function saveMemory() {
     /*
-        if yes -> saveMemory()
-    */
-
-
-    let memory = {
-        question: "how you doin?",
-        text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-        color: "AABBCCDD",
-        userHash: "notsureyet"
-    }
-    saveMemory();
-
-    async function saveMemory() {
-        /*
+        show are you sure
+        if yes
             save in db
             close textbox
             play animation?
             refresh memories or add newly saved to memorieslist
-        */
+    */
 
-        const response = await fetch("./memorydao.php", {
-            method: 'POST',
-            body: JSON.stringify(memory)
-        })
+    let memory = {
+        question: "questione",
+        message: "massage",
+        color: "AABBCCDD",
+        userHash: "notsureyet"
     }
+    let request = {
+        action: "newMemory",
+        data: memory
+    }
+
+    const response = fetch("./memorydao.php", {
+        method: 'POST',
+        body: JSON.stringify(request)
+    }).then(hi => {
+        console.log(hi);
+    })
 }
-showAreYouSurePrompt();
+
+saveMemory();
 
 // not sure how that is going to work
 function preventSpam() {
