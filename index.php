@@ -13,8 +13,10 @@
 
 <body>
 	<h1>One bench, thousands of memories</h1>
-	<p> while everything around us is changing something remains in its place </p>
+	<h2 id="randomQuestion"></h2>
 	<img src="img/bench.png" id="mainImage">
+	<textarea id="messageBox" placeholder="Share your thoughts..."></textarea>
+	<slider-color-picker style="width: 97%"><slider-color-picker>
 </body>
 
 </html>
