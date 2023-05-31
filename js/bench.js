@@ -1,3 +1,4 @@
+import "./lib/slider-color-picker.js";
 /*
     db-connection:
     localhost 
@@ -18,9 +19,18 @@
         ,Message VARCHAR(5000)
         ,Color VARCHAR(9)
         ,By_User_Hash VARCHAR(64)
-        ,Date_Created DATE
+        ,Date_Created DATE DEFAULT CURRENT_TIMESTAMP
         );
 */
+
+let shownQuestion = "";
+let textbox;
+let selectedColor = "#FFFFFF";
+window.onload = function () {
+    prepareColorPicker();
+    showRandomQuestion();
+    textbox = document.getElementById('messageBox');
+};
 
 const RANDOM_QUESTIONS = [
     "How are you?",
@@ -34,8 +44,10 @@ const MIN_BUBBLE_SIZE = 80;
 const MAX_BUBBLE_SIZE = 400;
 let benchMemories = [];
 
-function getRandomQuestion() {
-    return null;
+function showRandomQuestion() {
+    let randomIndex = Math.floor(Math.random() * RANDOM_QUESTIONS.length)
+    shownQuestion = RANDOM_QUESTIONS[randomIndex];
+    document.getElementById("randomQuestion").innerHTML = shownQuestion;
 }
 
 function getID() {
@@ -90,12 +102,15 @@ function showTextBox() {
     */
 }
 
-function colorPicker() {
-    /*
-        colorgradient as a slider
-        convert to pastel
-        apply to textbox
-    */
+function prepareColorPicker() {
+    const picker = document.querySelector('slider-color-picker');
+    picker.value = '#ffa0a0';
+    picker.addEventListener('change', () => {
+        selectedColor = picker.value;
+        textbox.style.backgroundColor = selectedColor;
+    });
+    console.log(picker)
+
 }
 
 function showAreYouSurePrompt() {
@@ -127,8 +142,3 @@ function showAreYouSurePrompt() {
     }
 }
 showAreYouSurePrompt();
-
-// not sure how that is going to work
-function preventSpam() {
-
-}
