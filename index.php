@@ -1,4 +1,4 @@
-<?php include 'memorydao.php'?>
+<?php include 'memorydao.php' ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -12,12 +12,18 @@
 
 
 <body>
-	<h1>One bench, thousands of memories</h1>
-	<h2 id="randomQuestion"></h2>
-	<div></div>
-	<img src="img/bench.png" id="mainImage">
-	<textarea id="messageBox" placeholder="Share your thoughts..."></textarea>
-	<slider-color-picker style="width: 97%"><slider-color-picker>
+	<div class="container1">
+		<h1>One Bench</h1>
+	</div>
+
+	<slider-color-picker style="width: 97%"></slider-color-picker>
+	<div class="container2">
+		<h2 id="randomQuestion"></h2>
+		<div id="circle"></div>
+		<textarea id="messageBox" placeholder="Share your thoughts..."></textarea>
+		<button>cllickme</button>
+	</div>
+
 </body>
 
 </html>

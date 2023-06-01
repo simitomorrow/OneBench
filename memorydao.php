@@ -14,18 +14,14 @@ if (isset($_POST["action"])) {
 
 function newMemory($memory, $conn)
 {
-  // dump($memory);
-  // dump($memory["question"]);
-
   foreach ($memory as $key => $value) {
     $memory[$key] = addslashes($value);
   }
 
   $sql = "INSERT INTO memory(Question, Message, Color, By_User_Hash) VALUES ('{$memory["question"]}','{$memory["message"]}','{$memory["color"]}','{$memory["userHash"]}');";
-  // echo $sql;
 
   if ($conn->query($sql) === TRUE) {
-    // echo "New record created successfully";
+    echo "New record created successfully";
   } else {
     echo "Error: " . $sql . "<br>" . $conn->error;
   }
@@ -38,7 +34,6 @@ function readAllMemories($conn)
   if ($result->num_rows > 0) {
     $concat = [];
     while($row = $result->fetch_assoc()) {
-      //  	Question 	Message 	Color 	By_User_Hash 	Date_Created
       $concat[] = $row;
     }
     echo json_encode($concat);

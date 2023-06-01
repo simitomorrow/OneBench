@@ -1,12 +1,38 @@
 @charset "UTF-8";
-body {
+
+@font-face {
+    font-family: "Typewriter";
+    src: url("../fonts/JMH\ Typewriter.ttf") format("truetype");
+    font-weight: bold;
+    font-style: normal;
+}
+
+body, html {
+    font-family: "Typewriter";
 	background-color: #DFD4C0;
-	padding: 1em;
-	width: 100vw;
+	padding: 0;
+	margin: 0;
+	width: 100%;
 }
-.img {
-	overflow: hidden;
+
+.container1 {
+	background-image: url("../img/bench.png");
+	background-size: cover;
+	background-position-x: 20%;
+	background-position-x: 20%;
+	height: 694px;
 }
+
+.container2 {
+	background-image: url("../img/bench.png");
+	background-size: cover;
+}
+
+img {
+	object-fit: contain;
+	width: 100%;
+}
+
 #messageBox {
 	width: 100%;
 	display: block;
@@ -14,6 +40,7 @@ body {
 	resize: none;
 	height: 50%;
 }
+
 .slider-color-picker {
 	width: 100%;
 }
