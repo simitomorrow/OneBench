@@ -15,6 +15,11 @@ body, html {
 	width: 100%;
 }
 
+h1 {
+	margin: 0;
+	padding: 0;
+}
+
 .container1 {
 	background-image: url("../img/bench.png");
 	background-size: cover;
