@@ -7,6 +7,9 @@ if (isset($_POST["action"])) {
   if ($action == "newMemory") {
     newMemory($_POST["data"], $conn);
   }
+  if ($action == "readAllMemories") {
+    readAllMemories($conn);
+  }
 }
 
 function newMemory($memory, $conn)
@@ -18,7 +21,7 @@ function newMemory($memory, $conn)
     $memory[$key] = addslashes($value);
   }
 
-  $sql = "INSERT INTO memory(Question, Message, Color, By_User_Hash) VALUES ('{$memory["question"]}','{$memory["message"]}','{$memory["color"]}','{$memory["userHash"]}')";
+  $sql = "INSERT INTO memory(Question, Message, Color, By_User_Hash) VALUES ('{$memory["question"]}','{$memory["message"]}','{$memory["color"]}','{$memory["userHash"]}');";
   // echo $sql;
 
   if ($conn->query($sql) === TRUE) {
@@ -28,6 +31,21 @@ function newMemory($memory, $conn)
   }
 }
 
+function readAllMemories($conn)
+{
+  $sql = "SELECT * FROM memory;";
+  $result = $conn->query($sql);
+  if ($result->num_rows > 0) {
+    $concat = [];
+    while($row = $result->fetch_assoc()) {
+      //  	Question 	Message 	Color 	By_User_Hash 	Date_Created
+      $concat[] = $row;
+    }
+    echo json_encode($concat);
+  } else {
+    echo "0 results";
+  }
+}
 
 
 function dump(...$variables)

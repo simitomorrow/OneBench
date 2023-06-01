@@ -2,6 +2,7 @@
 body {
 	background-color: #DFD4C0;
 	padding: 1em;
+	width: 100vw;
 }
 .img {
 	overflow: hidden;

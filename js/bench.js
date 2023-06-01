@@ -63,20 +63,18 @@ function getID() {
 }
 
 function readMemories() {
-    /*
-        read from db
-        create objects?
-        memory = {
-            id: "1"
-            question: "how?"
-            text: "asdf"
-            color: "AABBCCDD"
-            userHash: "hexhash32"
-            date: "xx-xx-xxxx xx:xx:xx"
-        }
-        benchMemories.pusH(memory)
-    */
+    console.log("do the thing")
+    let request = {
+        action: "readAllMemories"
+    }
+
+    const response = fetch("./memorydao.php", {
+        method: 'POST',
+        body: JSON.stringify(request)
+    }).then(response => response.text())
+    .then(data => console.log(JSON.parse(data)));
 }
+readMemories();
 
 function displayMemories() {
     /*
@@ -94,14 +92,6 @@ function displayMemories() {
     */
 }
 
-function showTextBox() {
-    /*
-        on question press?
-        always viewable?
-        alexandras design
-    */
-}
-
 function prepareColorPicker() {
     const picker = document.querySelector('slider-color-picker');
     picker.value = '#ffa0a0';
@@ -109,20 +99,9 @@ function prepareColorPicker() {
         selectedColor = picker.value;
         textbox.style.backgroundColor = selectedColor;
     });
-    console.log(picker)
-
 }
 
 async function saveMemory() {
-    /*
-        show are you sure
-        if yes
-            save in db
-            close textbox
-            play animation?
-            refresh memories or add newly saved to memorieslist
-    */
-
     let memory = {
         question: "questione",
         message: "massage",
@@ -133,13 +112,9 @@ async function saveMemory() {
         action: "newMemory",
         data: memory
     }
-
-    const response = fetch("./memorydao.php", {
+    fetch("./memorydao.php", {
         method: 'POST',
         body: JSON.stringify(request)
-    }).then(hi => {
-        console.log(hi);
-    })
+    });
 }
-saveMemory();
 
