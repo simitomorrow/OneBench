@@ -18,7 +18,7 @@ function newMemory($memory, $conn)
     $memory[$key] = addslashes($value);
   }
 
-  $sql = "INSERT INTO memory(Question, Message, Color, By_User_Hash) VALUES ('{$memory["question"]}','{$memory["message"]}','{$memory["color"]}','hmmm');";
+  $sql = "INSERT INTO memory(Question, Message, Color) VALUES ('{$memory["question"]}','{$memory["message"]}','{$memory["color"]}');";
 
   if ($conn->query($sql) === TRUE) {
     echo "New record created successfully";
