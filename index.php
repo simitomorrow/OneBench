@@ -13,15 +13,32 @@
 
 <body>
 	<div id="container1">
-		<h1>One Bench</h1>
+		<h1 id="title">One Bench</h1>
+		<span id="speechBubble">Tell me <br>something</span>
 	</div>
 
-	<slider-color-picker style="width: 97%"></slider-color-picker>
 	<div id="container2">
-		<h2 id="randomQuestion"></h2>
-		<div id="circle"></div>
 		<textarea id="messageBox" placeholder="Share your thoughts..."></textarea>
-		<button id="saveMemoryButton">clickme</button>
+		<div id="sliderContainer">
+			<slider-color-picker style="width: 97%"></slider-color-picker>
+		</div>
+		<button id="saveMemoryButton" class="button-6">Add to Diary</button>
+	</div>
+
+	<div id="bubbleCollection">
+	</div>
+	<br>
+
+	<div id="memoryDetails" class="modal">
+		<div class="modal-content">
+			<span class="close">&times;</span>
+			<div id="modalQuestion">
+			</div>
+			<div id="modalText">
+			</div>
+			<span id="modalDate">
+			</span>
+		</div>
 	</div>
 
 </body>
