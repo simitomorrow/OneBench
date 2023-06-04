@@ -12,16 +12,16 @@
 
 
 <body>
-	<div class="container1">
+	<div id="container1">
 		<h1>One Bench</h1>
 	</div>
 
 	<slider-color-picker style="width: 97%"></slider-color-picker>
-	<div class="container2">
+	<div id="container2">
 		<h2 id="randomQuestion"></h2>
 		<div id="circle"></div>
 		<textarea id="messageBox" placeholder="Share your thoughts..."></textarea>
-		<button>cllickme</button>
+		<button id="saveMemoryButton">clickme</button>
 	</div>
 
 </body>
