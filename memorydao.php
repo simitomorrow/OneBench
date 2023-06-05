@@ -18,7 +18,7 @@ function newMemory($memory, $conn)
     $memory[$key] = addslashes($value);
   }
 
-  $sql = "INSERT INTO memory(Question, Message, Color) VALUES ('{$memory["question"]}','{$memory["message"]}','{$memory["color"]}');";
+  $sql = "INSERT INTO MEMORY(Question, Message, Color) VALUES ('{$memory["question"]}','{$memory["message"]}','{$memory["color"]}');";
 
   if ($conn->query($sql) === TRUE) {
     echo "New record created successfully";
@@ -29,7 +29,7 @@ function newMemory($memory, $conn)
 
 function readAllMemories($conn)
 {
-  $sql = "SELECT * FROM memory;";
+  $sql = "SELECT * FROM MEMORY;";
   $result = $conn->query($sql);
   if ($result->num_rows > 0) {
     $concat = [];

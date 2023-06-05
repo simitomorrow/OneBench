@@ -16,6 +16,7 @@ let modalDate;
 let modal;
 let closeModal;
 window.onload = function () {
+    readMemories();
     prepareColorPicker();
     let titleImageContainer = document.getElementById("container1");
     titleImageContainer.style.height = "" + (titleImageContainer.offsetWidth / 9 * 16) + "px";
@@ -81,7 +82,7 @@ function getRandomQuestion() {
     return shownQuestion;
 }
 
-function readMemories() {
+async function readMemories() {
     const request = {
         action: "readAllMemories"
     }
@@ -91,12 +92,14 @@ function readMemories() {
         body: JSON.stringify(request)
     }).then(response => response.text())
         .then(data => {
-            benchMemories = JSON.parse(data)
-            bubbleCollection.innerHTML = "";
-            displayMemories();
+            try {
+                benchMemories = JSON.parse(data)
+                bubbleCollection.innerHTML = "";
+                displayMemories();
+            } catch (error) {
+            }
         });
 }
-readMemories();
 
 function displayMemories() {
     for (let i = 0; i < benchMemories.length; i++) {
@@ -115,6 +118,9 @@ function createMemoryBubble(memory) {
     newBubble.classList.add("bubble");
     newBubble.setAttribute("id", bubbleID)
     let bubbleSize = ((MAX_BUBBLE_SIZE - MIN_BUBBLE_SIZE) * memory.Message.length / longestTextLength) + MIN_BUBBLE_SIZE * pageScaling + Math.random() * 10;
+    if(memory.Message.length < 1) {
+        bubbleSize = 30;
+    }
     newBubble.style.height = "" + bubbleSize + "px";
     newBubble.style.width = "" + bubbleSize + "px";
     newBubble.style.margin = "" + (Math.random() * 3 + 1) + "px";
